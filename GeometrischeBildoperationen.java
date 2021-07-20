@@ -1,4 +1,5 @@
 import java.util.Random;
+import javafx.scene.paint.Color;
 
 /**
  * Algorithmen zur Änderung der Pixelpositionen eines Pictures
@@ -20,6 +21,7 @@ public class GeometrischeBildoperationen  implements Bildoperation
     public static final int OP_DreheLinks = 3;
     public static final int OP_DreheRechts = 4;
     public static final int OP_Drehe180 = 5;
+    public static final int OP_Faltung = 6;
 
     // ID der aktuell aktiven geometrischen Operation.
     private int op = OP_Nil;
@@ -113,8 +115,8 @@ public class GeometrischeBildoperationen  implements Bildoperation
      * @return Eine um 90 Grad gegen den Uhrzeigersinn gedrehte Kopie des Bildes
      */
     public Picture dreheLinks( Picture originalBild) {
-        int breite = originalBild.getHeight();
-        int hoehe  = originalBild.getWidth();
+        int breite = originalBild.getWidth();
+        int hoehe  = originalBild.getHeight();
 
         int[][] pixel = originalBild.getPixelsTable();
         int[][] pixelNeu = new int[hoehe][breite];
@@ -125,8 +127,13 @@ public class GeometrischeBildoperationen  implements Bildoperation
             }
         }
         Picture neuesBild = originalBild.copy();
+        neuesBild.setDimensions(hoehe, breite);
         neuesBild.setPixelsArray(pixelNeu); 
         return neuesBild;
     }
-
+    
 }
+    
+    
+
+
